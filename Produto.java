@@ -6,20 +6,30 @@ public class Produto {
     int quantidade;
     private double valor;
 
-    Produto(String nome, String marca, int quantidade, double valor){
+
+    Produto(String nome, String marca, int quantidade) {
         this.nome = nome;
         this.marca = marca;
         this.quantidade = quantidade;
-        this.valor = valor;
     }
-    public void setNome(double valor) {
-        if (valor > 0) {
-            this.valor = valor;
-            System.out.println("Valor Cadastrado!");
-        } else {
-            System.out.println("Valor inválido!");
+
+    public void setValor() {
+        Scanner scannerValor = new Scanner(System.in);
+        double novoValor = scannerValor.nextDouble();
+
+        while (novoValor < 0) {
+            System.out.println("Digite o valor do produto:");
+            novoValor = scannerValor.nextDouble();
+            if (novoValor > 0) {
+                this.valor = novoValor;
+                System.out.println("Valor Cadastrado!");
+            } else {
+                System.out.println("Valor inválido! O valor deve ser maior que zero.");
+            }
         }
+        scannerValor.close();
     }
+    
 
     public double getValor() {
         return valor;
@@ -31,4 +41,6 @@ public class Produto {
         System.out.println("Quantidade: " + quantidade);
         System.out.println("Valor: " + valor);
     }
+
+
 }

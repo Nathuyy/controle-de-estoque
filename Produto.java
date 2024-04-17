@@ -1,52 +1,34 @@
-// import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class Produto {
     String nome;
+    String marca;
     int quantidade;
-    String categoria;
-    double preco;
+    private double valor;
 
-    public Produto(String nome, int quantidade, String categoria, double preco) {
+    Produto(String nome, String marca, int quantidade, double valor){
         this.nome = nome;
+        this.marca = marca;
         this.quantidade = quantidade;
-        this.categoria = categoria;
-        this.preco = preco;
+        this.valor = valor;
+    }
+    public void setNome(double valor) {
+        if (valor > 0) {
+            this.valor = valor;
+            System.out.println("Valor Cadastrado!");
+        } else {
+            System.out.println("Valor inválido!");
+        }
     }
 
-    public String getNome() { //getter recebe o nome
-        return nome;
+    public double getValor() {
+        return valor;
     }
 
-    public int getQuantidade() {
-        return quantidade;
+    public void mostrarProdutos() {
+        System.out.println("Nome: " + nome);
+        System.out.println("Marca: " + marca);
+        System.out.println("Quantidade: " + quantidade);
+        System.out.println("Valor: " + valor);
     }
-
-    public void setQuantidade(int quantidade) { //modifica o valor
-        this.quantidade = quantidade;
-    }
-    
-   
-
-
-
-
-    // public void adicionarEstoque(int quantidadeAdicionada) {
-    //     while (true) {
-    //         try {
-    //             if(quantidadeAdicionada <= 0) {
-    //                 System.out.println("A quantidade adicionada deve ser um número positivo.");
-    //             } else {
-    //                 this.quantidade += quantidadeAdicionada;
-    //                 System.out.println(quantidadeAdicionada + " unidades foram adicionadas ao estoque de " + this.nome + ".");
-    //             }
-    //             break;
-    //         } catch (InputMismatchException e) {
-    //             System.out.println("Entrada inválida. Por favor, insira um número inteiro.");
-
-    //         }      
-    //     } 
-    // }
-    // public void removerEstoque(int quantidadeRemovida) {
-
-    // }
 }

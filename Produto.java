@@ -15,7 +15,7 @@ public class Produto {
 
     public void setValor() {
         Scanner scannerValor = new Scanner(System.in);
-        double novoValor = scannerValor.nextDouble();
+        double novoValor = tratamentoDeValor(scannerValor);
 
         while (novoValor < 0) {
             System.out.println("Digite o valor do produto:");
@@ -40,6 +40,17 @@ public class Produto {
         System.out.println("Marca: " + marca);
         System.out.println("Quantidade: " + quantidade);
         System.out.println("Valor: " + valor);
+    }
+
+    public static double tratamentoDeValor(Scanner scannerValor) {
+        while (true) {
+            try {
+                double valor = Integer.parseInt(scannerValor.nextLine());
+                return valor;
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada inválida. Por favor, insira um número inteiro.");
+            }
+        }
     }
 
 

@@ -5,15 +5,15 @@ public class CadastroDeProduto {
         Scanner leitor = new Scanner(System.in);
         Estoque estoque = new Estoque();
 
+        
         System.out.println("-----MENU DE AÇÕES-----\n1- Ver Estoque;\n2- Adicionar novo produto;\n3-Sair;");
-        int escolha = leitor.nextInt();
+        int escolha = tratamentoDeMenu(leitor);
 
             if (escolha == 1) {
+                System.out.println("------ADICIONAR PRODUTO NO ESTOQUE------");
                 System.out.println("Detalhes do estoque atual:");
                 estoque.mostrarProdutos(); 
             } else if (escolha == 2) {
-                leitor.nextLine(); // Limpa o buffer do scanner
-                
                 System.out.println("Digite o nome do produto:");
                 String nome = leitor.nextLine();
     
@@ -21,8 +21,7 @@ public class CadastroDeProduto {
                 String marca = leitor.nextLine();
     
                 System.out.println("Digite a quantidade do produto:");
-                int quantidade = leitor.nextInt();
-    
+                int quantidade = tratamentoDeQuantidade(leitor);
     
                 Produto produto = new Produto(nome, marca, quantidade);
                 System.out.println("Digite o preço do produto:");
@@ -41,15 +40,26 @@ public class CadastroDeProduto {
     
         leitor.close();
     }
-    public void tratamentoDeMenu(Scanner leitor) {
+    public static int tratamentoDeMenu(Scanner leitor) {
         while (true) {
             try {
-                
-            } catch (Exception e) {
-                // TODO: handle exception
+                int escolha = Integer.parseInt(leitor.nextLine());
+                return escolha;
+            } catch (NumberFormatException  e) {
+                System.out.println("Entrada inválida. Por favor, insira um número inteiro.");
+            }
             }
         }
 
+        public static int tratamentoDeQuantidade(Scanner leitor) {
+            while (true) {
+                try {
+                    int quantidade = Integer.parseInt(leitor.nextLine());
+                    return quantidade;
+                } catch (NumberFormatException  e) {
+                    System.out.println("Entrada inválida. Por favor, insira um número inteiro.");
+                }
+            }
     }
 
 }

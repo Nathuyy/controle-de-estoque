@@ -5,8 +5,10 @@ public class CadastroDeProduto {
         Scanner leitor = new Scanner(System.in);
         Estoque estoque = new Estoque();
 
-        
-        System.out.println("-----MENU DE AÇÕES-----\n1- Ver Estoque;\n2- Adicionar novo produto;\n3-Sair;");
+        boolean continuar = true;
+
+        while (continuar) {
+            System.out.println("-----MENU DE AÇÕES-----\n1- Ver Estoque;\n2- Adicionar novo produto;\n3-Sair;");
         int escolha = tratamentoDeMenu(leitor);
 
             if (escolha == 1) {
@@ -31,13 +33,19 @@ public class CadastroDeProduto {
                 
                 System.out.println("Produto adicionado com sucesso!");
                 System.out.println("Detalhes do estoque atual:");
+
                 estoque.mostrarProdutos(); 
+                
             } else if (escolha == 3) {
                 System.out.println("Programa encerrado.");
+                continuar = false;
+
             } else {
                 System.out.println("Escolha Inválida");
             }
     
+        }
+        
         leitor.close();
     }
     public static int tratamentoDeMenu(Scanner leitor) {
